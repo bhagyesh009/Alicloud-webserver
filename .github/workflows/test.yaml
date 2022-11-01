@@ -1,6 +1,15 @@
 name: Java CI
 
-on: [push]
+on:
+  push:
+    branches: [ feature-bhagyesh ]
+    tags: "*"
+  pull_request:
+    branches: [ feature-bhagyesh ]
+  repository_dispatch:
+    # this is the event_type passed in from the webhook, needs to match exactly what was defined in the webhook custom data payload
+    types: [ "event-triggered-by-jira" ]
+
 
 jobs:
   build:
